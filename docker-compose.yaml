@@ -1,0 +1,52 @@
+version: '3.8'
+
+volumes:
+  redis:
+  postgres:
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin@123
+      POSTGRES_DB: inventory
+    volumes:
+      - ./.volume/postgres:/data/db
+    ports:
+      - '27019:5432'
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    volumes:
+      - ./.volume/redis:/data
+    ports:
+      - '6381:6379'
+
+  # exports-processor:
+  #   container_name: exports-processor
+  #   build: 
+  #     context: ./services/exports-processor
+  #     dockerfile: ./Dockerfile.export-processor
+  #   restart: always
+  #   environment:
+  #     - REDIS_PORT=6379
+  #     - REDIS_HOST=redis
+  #   ports:
+  #     - '7000:4000'
+  
+  # inventory:
+  #   container_name: inventory
+  #   build: 
+  #     context: ./services/inventory
+  #     dockerfile: ./Dockerfile.inventory
+  #   restart: always
+  #   environment:
+  #     - REDIS_PORT=6379
+  #     - REDIS_HOST=redis
+  #   ports:
+  #     - '7001:4001'
