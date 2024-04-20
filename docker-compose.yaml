@@ -2,21 +2,20 @@ version: '3.8'
 
 volumes:
   redis:
-  postgres:
+  mongodb:
 
 services:
-  postgres:
-    container_name: postgres
-    image: postgres:latest
-    restart: unless-stopped
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin@123
-      POSTGRES_DB: inventory
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: passadmin123
     volumes:
-      - ./.volume/postgres:/data/db
+      - ./.volume/mongodb:/data/db
     ports:
-      - '27019:5432'
+      - '27019:27017'
 
   redis:
     container_name: redis

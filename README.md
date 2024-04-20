@@ -3,8 +3,7 @@
 ### Tools
 - Redis
 - BollMQ
-- PostgresSQL
-- React (Presentation)
+- Mongodb
 - Nestjs (Backend framework)
 - Docker (Container orchestration)
 

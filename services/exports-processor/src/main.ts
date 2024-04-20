@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { envs } from './config';
+import { envs } from './core/config';
 import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
@@ -8,7 +8,7 @@ async function bootstrap() {
 
   await app.listen(envs.PORT, () => {
     const logger = new Logger('Main');
-    logger.log(`Application running on port ${envs.PORT} 🚀`);
+    logger.log(`Export Processor running on port ${envs.PORT} 🚀`);
   });
 }
 bootstrap();

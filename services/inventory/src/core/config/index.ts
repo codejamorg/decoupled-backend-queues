@@ -12,20 +12,14 @@ if (error) {
 
 interface IEnv {
   PORT: number;
-  database: {
-    PORT: number;
-    HOST: string;
-    USER: string;
-    PASSWORD: string;
-  };
+  DB_URL: string;
+  REDIS_HOST: string;
+  REDIS_PORT: number;
 }
 
 export const envs: IEnv = {
   PORT: envValues.PORT || 3000,
-  database: {
-    PORT: envValues.DB_PORT || 5432,
-    HOST: envValues.DB_HOST || 'localhost',
-    USER: envValues.DB_USER,
-    PASSWORD: envValues.PASSWORD,
-  },
+  DB_URL: envValues.DB_URL,
+  REDIS_HOST: envValues.REDIS_HOST,
+  REDIS_PORT: envValues.REDIS_PORT || 6379,
 };
