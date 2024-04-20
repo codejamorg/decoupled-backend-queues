@@ -7,3 +7,4 @@
 - Nestjs (Backend framework)
 - Docker (Container orchestration)
 
+![Architecture](diagram.png)
